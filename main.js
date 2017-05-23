@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path');
 const url = require('url');
 
@@ -13,13 +13,20 @@ app.on('window-all-closed', function () {
   }
 });
 
+app.on('browser-window-created', function (e, window) {
+  window.setMenu(null);
+});
+
 app.on('ready', function () {
 
   // Initialize the window to our specified dimensions
-  win = new BrowserWindow({width: 1000, height: 600});
+  win = new BrowserWindow({
+    minWidth: 800,
+    minHeight: 600
+  });
 
   // Specify entry point
-  if (process.env.PACKAGE === 'true'){
+  if (process.env.PACKAGE === 'true') {
     win.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
