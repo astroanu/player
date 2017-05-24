@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { CommonModule } from '@angular/common';
-import { AutoCompleteModule } from 'primeng/primeng';
+import { AutoCompleteModule, SliderModule } from 'primeng/primeng';
 
 
 import { MusicSettingsComponent } from './music-settings/music-settings.component';
@@ -19,6 +19,7 @@ import { ApiService } from './shared/api.service';
   imports: [
     FormsModule,
     AutoCompleteModule,
+    SliderModule,
     HttpModule,
     CommonModule
   ],

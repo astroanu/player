@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'music-progress',
@@ -9,5 +9,9 @@ export class MusicProgressComponent {
   @Input() elapsed: string;
   @Input() total: string;
   @Input() current: number;
+  @Input() progress: number;
+
+  @Output() seek = new EventEmitter();
+
 }
 

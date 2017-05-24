@@ -20,7 +20,7 @@
       <music-player (random)="handleRandom($event)" (backward)="handleBackward()" (forward)="handleForward()" (pauseplay)="handlePausePlay()"
         (stop)="handleStop()" [paused]="paused"></music-player>
 
-      <music-progress [current]="position" [elapsed]="elapsed" [total]="duration"></music-progress>
+      <music-progress [current]="position" (seek)="handleSeek($event)" [elapsed]="elapsed" [total]="duration"></music-progress>
 
     </div>
   </div>

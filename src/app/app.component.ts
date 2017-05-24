@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
     this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
   }
 
+  handleSeek(e) {
+    this.musicService.audio.currentTime = e.value;
+  }
+
   handleEnded(e) {
     this.handleRandom();
   }
