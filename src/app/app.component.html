@@ -22,6 +22,8 @@
 
       <music-progress [current]="position" (seek)="handleSeek($event)" [elapsed]="elapsed" [total]="duration"></music-progress>
 
+      <music-volume [muted]="muted" [volume]="gain" (muteUnmute)="handleMuteUnmute()" (gain)="handleGain($event)"></music-volume>
+
     </div>
   </div>
 </div>

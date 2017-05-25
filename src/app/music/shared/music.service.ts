@@ -27,11 +27,11 @@ export class MusicService {
     this.audio.play()
   }
 
-  getPlaylistTracks () {
-      //Request for a playlist via Soundcloud using a client id
-      return this.apiService.get('https://api.soundcloud.com/playlists/209262931', true)
-        .map(res => res.json())
-        .map(data => data.tracks);
+  getPlaylistTracks() {
+    //Request for a playlist via Soundcloud using a client id
+    return this.apiService.get('https://api.soundcloud.com/playlists/209262931', true)
+      .map(res => res.json())
+      .map(data => data.tracks);
   }
 
   randomTrack(tracks) {
@@ -43,7 +43,7 @@ export class MusicService {
   }
 
   formatTime(seconds) {
-    let minutes:any = Math.floor(seconds / 60);
+    let minutes: any = Math.floor(seconds / 60);
     minutes = (minutes >= 10) ? minutes : "0" + minutes;
     seconds = Math.floor(seconds % 60);
     seconds = (seconds >= 10) ? seconds : "0" + seconds;

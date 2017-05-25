@@ -26,6 +26,7 @@
     "@angular/router": "^3.3.1",
     "core-js": "^2.4.1",
     "dotenv": "^4.0.0",
+    "electron-settings": "^3.0.14",
     "font-awesome": "^4.7.0",
     "primeng": "^1.1.4",
     "rxjs": "^5.0.1",

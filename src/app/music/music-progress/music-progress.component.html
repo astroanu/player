@@ -1,6 +1,6 @@
 <div class="progress">
-  <span>{{elapsed}}</span>
-  <progress value="{{current}}" max="1"></progress>
-  <span>{{current}} - {{total}} - {{progress}} </span>
+  <span>{{ elapsed | timecode }}</span>
+  <progress value="{{ current }}" max="1"></progress>
+  <span>{{ total | timecode }}</span>
 </div>
 <p-slider [ngModel]="elapsed" (onChange)="seek.emit($event)" [min]="0" [max]="total"></p-slider>

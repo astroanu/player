@@ -1,0 +1,3 @@
+<button *ngIf="muted" (click)="muteUnmute.emit()"><i class="fa fa-volume-off"></i></button>
+<button *ngIf="!muted" (click)="muteUnmute.emit()"><i class="fa fa-volume-up"></i></button>
+<p-slider [ngModel]="volume" (onChange)="gain.emit($event)" [orientation]="'vertical'" [min]="0" [max]="100"></p-slider>

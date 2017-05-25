@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MusicModule } from './music/music.module';
+import { Settings } from 'electron-settings';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MusicModule } from './music/music.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MusicModule
+    MusicModule,
+    Settings
   ],
   providers: [],
   bootstrap: [AppComponent]

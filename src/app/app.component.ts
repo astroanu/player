@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from './music/shared/music.service';
+import { Settings } from 'electron-settings';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ export class AppComponent implements OnInit {
   position: number;
   elapsed: number;
   duration: number;
+  gain: number = 80;
   paused = true;
+  muted = false;
   tracks: any[] = [];
   filteredTracks: any[] = [];
   backgroundStyle;
@@ -23,11 +26,24 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.musicService.getPlaylistTracks().subscribe(tracks => {
       this.tracks = tracks;
-      this.handleRandom();
+      // this.handleRandom();
     });
 
     this.musicService.audio.onended = this.handleEnded.bind(this);
     this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
+
+
+
+    Settings.set('name', {
+      first: 'Cosmo',
+      last: 'Kramer'
+    });
+
+    Settings.get('name.first');
+    // => "Cosmo" 
+
+    Settings.has('name.middle');
+
   }
 
   handleSeek(e) {
@@ -36,6 +52,10 @@ export class AppComponent implements OnInit {
 
   handleEnded(e) {
     this.handleRandom();
+  }
+
+  handleGain(e) {
+    this.musicService.audio.volume = e.value / 100;
   }
 
   handleRandom() {
@@ -52,6 +72,16 @@ export class AppComponent implements OnInit {
     } else {
       this.paused = false;
       this.musicService.audio.pause()
+    }
+  }
+
+  handleMuteUnmute() {
+    if (this.muted) {
+      this.muted = false;
+      this.musicService.audio.volume = .5;
+    } else {
+      this.muted = true;
+      this.musicService.audio.volume = 0;
     }
   }
 
