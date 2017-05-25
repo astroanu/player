@@ -4,7 +4,6 @@ import { HttpModule } from "@angular/http";
 import { CommonModule } from '@angular/common';
 import { AutoCompleteModule, SliderModule, ButtonModule } from 'primeng/primeng';
 
-
 import { MusicSettingsComponent } from './music-settings/music-settings.component';
 import { MusicSearchComponent } from './music-search/music-search.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';

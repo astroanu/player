@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from './music/shared/music.service';
-import { Settings } from 'electron-settings';
+
+import { app, dialog } from 'electron';
 
 @Component({
   selector: 'app-root',
@@ -33,16 +34,22 @@ export class AppComponent implements OnInit {
     this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
 
+    console.log(app);
 
-    Settings.set('name', {
-      first: 'Cosmo',
-      last: 'Kramer'
-    });
-
-    Settings.get('name.first');
-    // => "Cosmo" 
-
-    Settings.has('name.middle');
+    /* dialog.showOpenDialog(win, { properties: ['openFile', 'openDirectory', 'multiSelections'] }, function (e) {
+    console.log(e);
+  });*/
+    /*
+    
+        Settings.set('name', {
+          first: 'Cosmo',
+          last: 'Kramer'
+        });
+    
+        Settings.get('name.first');
+        // => "Cosmo" 
+    
+        Settings.has('name.middle');*/
 
   }
 
@@ -60,9 +67,9 @@ export class AppComponent implements OnInit {
 
   handleRandom() {
     const randomTrack = this.musicService.randomTrack(this.tracks);
-    this.musicService.play(randomTrack.stream_url)
+    this.musicService.play(randomTrack.stream_url);
     this.title = randomTrack.title;
-    this.backgroundStyle = this.composeBackgroundStyle(randomTrack.artwork_url)
+    this.backgroundStyle = this.composeBackgroundStyle(randomTrack.artwork_url);
   }
 
   handlePausePlay() {

@@ -7,6 +7,20 @@ require('electron-reload')(__dirname);
 
 let win = null;
 
+const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (win) {
+    if (win.isMinimized()) win.restore()
+    win.focus()
+  }
+});
+
+if (shouldQuit) {
+  alert('3');
+  app.quit();
+}
+
+
 app.on('window-all-closed', function () {
   if (process.platform != 'darwin') {
     app.quit();
@@ -43,5 +57,6 @@ app.on('ready', function () {
     win = null;
 
   });
+
 
 });
