@@ -15,7 +15,11 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 before_script:
-- npm install -g angular-cli
-- npm install -g karma
-- npm install
-- ng build
+  - npm install -g angular-cli
+  - npm install -g karma
+  - npm install
+  - npm run build
+  - npm run pree2e
+  - npm start
+script: 
+  - npm run e2e
