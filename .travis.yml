@@ -21,6 +21,5 @@ before_script:
   - npm install
   - npm run build
   - npm run pree2e
-  - npm start
 script: 
   - npm run e2e
