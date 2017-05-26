@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MusicModule } from './music/music.module';
 import { PagesModule } from './pages/pages.module';
+import { SettingsModule } from './settings/settings.module';
 
 const appRoutes: Routes = [];
 
@@ -19,7 +20,8 @@ const appRoutes: Routes = [];
     FormsModule,
     HttpModule,
     MusicModule,
-    PagesModule
+    PagesModule,
+    SettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

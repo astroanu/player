@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from './music/shared/music.service';
+//import * as nodeID3  from 'node-id3';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +30,9 @@ export class AppComponent implements OnInit {
     });
 
     this.musicService.audio.onended = this.handleEnded.bind(this);
-    this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
+   // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
+    setInterval(this.handleTimeUpdate.bind(this), 1000);
 
     /*
     
@@ -44,6 +46,12 @@ export class AppComponent implements OnInit {
     
         Settings.has('name.middle');*/
 
+  }
+
+  handleFile(filePath){
+    //var read = nodeID3.read(filePath);
+    //console.log(read);
+    this.musicService.play(filePath);
   }
 
   handleSeek(e) {
@@ -62,7 +70,6 @@ export class AppComponent implements OnInit {
     const randomTrack = this.musicService.randomTrack(this.tracks);
     this.musicService.play(randomTrack.stream_url);
     this.title = randomTrack.title;
-    this.backgroundStyle = this.composeBackgroundStyle(randomTrack.artwork_url);
   }
 
   handlePausePlay() {
@@ -111,8 +118,8 @@ export class AppComponent implements OnInit {
     const elapsed = this.musicService.audio.currentTime;
     const duration = this.musicService.audio.duration;
     this.position = (elapsed / duration) ? (elapsed / duration) : 0;
-    this.elapsed = elapsed;//this.musicService.formatTime(elapsed);
-    this.duration = duration;// this.musicService.formatTime(duration);
+    this.elapsed = elapsed;
+    this.duration = duration;
   }
 
   handleQuery(payload) {
@@ -124,18 +131,6 @@ export class AppComponent implements OnInit {
   handleUpdate(track) {
     this.musicService.play(track.stream_url);
     this.title = track.title;
-    this.backgroundStyle = this.composeBackgroundStyle(track.artwork_url)
   }
 
-  composeBackgroundStyle(url) {
-    return {
-      width: '100%',
-      height: '1000px',
-      backgroundSize: 'cover',
-      backgroundImage: `linear-gradient(
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),   url(${this.musicService.xlArtwork(url)})`
-    }
-  }
 }

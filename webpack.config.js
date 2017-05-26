@@ -379,7 +379,7 @@ module.exports = {
         "favicon.ico"
       ],
       "globOptions": {
-        "cwd": "D:\\www\\music-player\\src",
+        "cwd": "./src",
         "dot": true,
         "ignore": "**/.gitkeep"
       }

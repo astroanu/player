@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let song of songs">
-        {{ song }}
+    <li *ngFor="let file of files">
+        <button (click)="handleClickFile(file)">{{ file }}</button>
     </li>
-</ul>{{ songs |json }}
+</ul>
