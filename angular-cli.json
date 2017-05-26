@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.24",
-    "name": "player"
+    "name": "player",
+    "ejected": true
   },
   "apps": [
     {
@@ -15,8 +15,8 @@
       "main": "main.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
+      "testTsconfig": "tsconfig.json",
       "prefix": "app",
-      "mobile": false,
       "styles": [
         "../node_modules/primeng/resources/themes/omega/theme.css",
         "../node_modules/primeng/resources/primeng.min.css",
@@ -31,8 +31,6 @@
       }
     }
   ],
-  "addons": [],
-  "packages": [],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -45,18 +43,13 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "prefixInterfaces": false,
-    "inline": {
-      "style": false,
-      "template": false
+    "class": {
+      "spec": false
     },
-    "spec": {
-      "class": false,
-      "component": true,
-      "directive": true,
-      "module": false,
-      "pipe": true,
-      "service": true
+    "component": {
+      "spec": true,
+      "inlineStyle": false,
+      "inlineTemplate": false
     }
   }
 }
