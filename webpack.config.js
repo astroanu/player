@@ -57,6 +57,7 @@ const postcssPlugins = function () {
 
 module.exports = {
   "devtool": "source-map",
+  "target": "electron-renderer",
   "resolve": {
     "extensions": [
       ".ts",
@@ -436,7 +437,7 @@ module.exports = {
     })
   ],
   "node": {
-    "fs": "empty",
+    "fs": true,
     "global": true,
     "crypto": "empty",
     "tls": "empty",
