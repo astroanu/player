@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AutoCompleteModule, SliderModule, ButtonModule } from 'primeng/primeng';
 
 import { MusicSettingsComponent } from './music-settings/music-settings.component';
@@ -17,8 +19,16 @@ import { FormatTimePipe } from './format-time-pipe';
 import { MusicService } from './shared/music.service';
 import { ApiService } from './shared/api.service';
 
+const musicRoutes: Routes = [
+  {
+    path: 'songs',
+    component: MusicFooterComponent
+  }
+];
+
 @NgModule({
   imports: [
+    RouterModule.forRoot(musicRoutes),
     FormsModule,
     AutoCompleteModule,
     SliderModule,
