@@ -1,6 +1,14 @@
-<div class="progress">
-  <span>{{ elapsed | timecode }}</span>
-  <progress value="{{ current }}" max="1"></progress>
-  <span>{{ total | timecode }}</span>
-</div>
-<p-slider [ngModel]="elapsed" (onChange)="seek.emit($event)" [min]="0" [max]="total"></p-slider>
+<table width="100%">
+  <tr>
+    <td width="10">
+      <span class="elapsed-tc">{{ elapsed | timecode }}</span>
+    </td>
+    <td width="*" class="progress-wrap">
+      <progress class="music-progress-bar" value="{{ current }}" max="1"></progress>
+      <p-slider [styleClass]="seek-bar" [ngModel]="elapsed" [animate]="true" (onChange)="seek.emit($event)" [min]="0" [max]="total"></p-slider>
+    </td>
+    <td width="10">
+      <span class="total-tc">{{ total | timecode }}</span>
+    </td>
+  </tr>
+</table>

@@ -12,19 +12,22 @@
       </div>
     </div>
   </div>
-  <div class="ui-grid-row">
-    <div class="ui-grid-col-12 bottom-panel">
+  <div class="ui-grid-row bottom-panel">
 
+    <div class="ui-grid-col-3 music-details-comp">
       <music-details [title]="title"></music-details>
+    </div>
 
+    <div class="ui-grid-col-6 player-comp">
       <music-player (random)="handleRandom($event)" (backward)="handleBackward()" (forward)="handleForward()" (pauseplay)="handlePausePlay()"
         (stop)="handleStop()" [paused]="paused"></music-player>
-
       <music-progress [current]="position" (seek)="handleSeek($event)" [elapsed]="elapsed" [total]="duration"></music-progress>
-
-      <music-volume [muted]="muted" [volume]="gain" (muteUnmute)="handleMuteUnmute()" (gain)="handleGain($event)"></music-volume>
-
     </div>
+
+    <div class="ui-grid-col-3 volume-comp">
+      <music-volume [muted]="muted" [volume]="gain" (muteUnmute)="handleMuteUnmute()" (gain)="handleGain($event)"></music-volume>
+    </div>
+
   </div>
 </div>
 

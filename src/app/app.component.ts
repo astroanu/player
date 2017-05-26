@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from './music/shared/music.service';
 
-import { app, dialog } from 'electron';
+//import { app, dialog } from 'electron';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
 
-    console.log(app);
+    // console.log(app);
 
     /* dialog.showOpenDialog(win, { properties: ['openFile', 'openDirectory', 'multiSelections'] }, function (e) {
     console.log(e);

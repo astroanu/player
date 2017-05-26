@@ -16,5 +16,18 @@
     .bottom-panel{
         margin-top: -80px;
         height: 80px;
+        background-color: #1b1d1f;
+
+        .music-details-comp{
+            padding: 15px;
+        }
+
+        .player-comp{
+        }
+
+        .volume-comp{
+            width: 150px;
+            float: right;
+        }
     }
 }

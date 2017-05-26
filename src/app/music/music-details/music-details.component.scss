@@ -1,0 +1,21 @@
+.album-art{
+    float: left;
+}
+
+.song-title{
+    padding: 0 0 5px 15px;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.artist-title{
+    padding: 0 0 0 15px;
+}
+
+.song-title,.artist-title{
+    margin: 0;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

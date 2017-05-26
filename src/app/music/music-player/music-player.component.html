@@ -1,8 +1,9 @@
 <div class="player">
-  <button pButton type="button" class="ui-button-secondary" (click)="backward.emit()" icon="fa-backward"></button>
-  <button pButton type="button" class="ui-button-secondary" *ngIf="paused" (click)="pauseplay.emit()" icon="fa-pause"></button>
-  <button pButton type="button" class="ui-button-secondary" *ngIf="!paused" (click)="pauseplay.emit()" icon="fa-play"></button>
-  <button pButton type="button" class="ui-button-secondary" (click)="stop.emit()" icon="fa-stop"></button>
-  <button pButton type="button" class="ui-button-secondary" (click)="random.emit()" icon="fa-random"></button>
-  <button pButton type="button" class="ui-button-secondary" (click)="forward.emit()" icon="fa-forward"></button>
+  <button pButton type="button" class="ui-button-secondary btn-random btn-transparent" (click)="random.emit()" icon="fa-random"></button>
+
+  <button pButton type="button" class="ui-button-secondary btn-transparent" (click)="backward.emit()" icon="fa-backward"></button>
+  <button pButton type="button" class="ui-button-secondary btn-play-pause" *ngIf="paused" (click)="pauseplay.emit()" icon="fa-pause"></button>
+  <button pButton type="button" class="ui-button-secondary btn-play-pause" *ngIf="!paused" (click)="pauseplay.emit()" icon="fa-play"></button>
+  <!--button pButton type="button" class="ui-button-secondary" (click)="stop.emit()" icon="fa-stop"></button-->
+  <button pButton type="button" class="ui-button-secondary btn-transparent" (click)="forward.emit()" icon="fa-forward"></button>
 </div>

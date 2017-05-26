@@ -1,0 +1,22 @@
+.player{
+    text-align: center;
+    font-size: 10px;
+    padding: 15px 0 8px 0;
+
+    .ui-button{
+        border-radius: 80px;
+    }
+
+    .btn-random{
+        margin-right: 30px;
+    }
+
+    .btn-play-pause{
+        font-size:14px;
+    }
+
+    .btn-transparent{
+        background-color: transparent; 
+        border-color: transparent; 
+    }
+}
