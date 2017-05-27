@@ -8,6 +8,8 @@ import { MusicModule } from './music/music.module';
 import { PagesModule } from './pages/pages.module';
 import { SettingsModule } from './settings/settings.module';
 
+import { ID3Service } from './services/id3.service';
+
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -22,8 +24,11 @@ const appRoutes: Routes = [];
     MusicModule,
     PagesModule,
     SettingsModule
+    
   ],
-  providers: [],
+  providers: [
+    ID3Service
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

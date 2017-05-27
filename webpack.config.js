@@ -445,7 +445,8 @@ module.exports = {
     "process": true,
     "module": false,
     "clearImmediate": false,
-    "setImmediate": false
+    "setImmediate": false,
+    "node-id3": true
   },
   "devServer": {
     "historyApiFallback": true

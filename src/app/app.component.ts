@@ -1,14 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, trigger, state, style, transition, animate, OnInit } from '@angular/core';
 import { MusicService } from './music/shared/music.service';
-//import * as nodeID3  from 'node-id3';
+
+import { TrackInfo } from './models/track-info';
+
+import { ID3Service } from './services/id3.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(120%, 0, 0)'
+      })),
+      transition('in => out', animate('500ms ease-in-out')),
+      transition('out => in', animate('500ms ease-in-out'))
+    ]),
+  ]
 })
 export class AppComponent implements OnInit {
-  title;
+  trackInfo:TrackInfo;
   position: number;
   elapsed: number;
   duration: number;
@@ -19,8 +34,11 @@ export class AppComponent implements OnInit {
   filteredTracks: any[] = [];
   backgroundStyle;
 
+  menuState:string = 'out';
+
   constructor(
-    private musicService: MusicService
+    private musicService: MusicService,
+    private id3service : ID3Service
   ) { }
 
   ngOnInit() {
@@ -32,7 +50,7 @@ export class AppComponent implements OnInit {
     this.musicService.audio.onended = this.handleEnded.bind(this);
    // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
-    setInterval(this.handleTimeUpdate.bind(this), 1000);
+    setInterval(this.handleTimeUpdate.bind(this), 100);
 
     /*
     
@@ -49,9 +67,10 @@ export class AppComponent implements OnInit {
   }
 
   handleFile(filePath){
-    //var read = nodeID3.read(filePath);
-    //console.log(read);
+    this.trackInfo = this.id3service.getTrackInfo(filePath);
     this.musicService.play(filePath);
+
+    this.menuState = this.menuState === 'out' ? 'in' : 'out';
   }
 
   handleSeek(e) {
@@ -69,7 +88,7 @@ export class AppComponent implements OnInit {
   handleRandom() {
     const randomTrack = this.musicService.randomTrack(this.tracks);
     this.musicService.play(randomTrack.stream_url);
-    this.title = randomTrack.title;
+   // this.title = randomTrack.title;
   }
 
   handlePausePlay() {
@@ -130,7 +149,7 @@ export class AppComponent implements OnInit {
 
   handleUpdate(track) {
     this.musicService.play(track.stream_url);
-    this.title = track.title;
+   // this.title = track.title;
   }
 
 }

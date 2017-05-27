@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./music-details.component.scss'],
 })
 export class MusicDetailsComponent {
-  @Input() title: string;
+  @Input() trackInfo: string;
 }
 

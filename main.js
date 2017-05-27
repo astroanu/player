@@ -33,13 +33,18 @@ app.on('browser-window-created', function (e, window) {
 
 app.on('ready', function () {
 
+  const { screen } = require('electron');
+  let display = screen.getPrimaryDisplay();
+
   // Initialize the window to our specified dimensions
   win = new BrowserWindow({
-    minWidth: 800,
-    minHeight: 600
+    minWidth: 900,
+    minHeight: 600,
+    maxWidth: display.size.width,
+    maxHeight: display.size.height
   });
-  
-    win.webContents.openDevTools();
+
+  win.webContents.openDevTools();
 
   // Specify entry point
   if (process.env.PACKAGE === 'true') {
