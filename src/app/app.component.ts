@@ -3,6 +3,7 @@ import { PlayerService } from './services/player.service';
 
 import { TrackInfo } from './models/track-info';
 
+import { SearchService } from './services/search.service';
 import { ID3Service } from './services/id3.service';
 
 @Component({
@@ -36,23 +37,33 @@ export class AppComponent implements OnInit {
 
   filteredTracks: any[] = [];
 
-  menuState:string = 'out';
+  menuState: string = 'out';
 
 
    display: boolean = false;
    
   constructor(
     private playerService: PlayerService,
-    private id3service : ID3Service
+    private id3service : ID3Service,
+    private musicService: MusicService,
+    private searchService: SearchService
   ) { }
 
   ngOnInit() {
-    this.playerService.audio.onended = this.handleEnded.bind(this);
+    this.indexMusicDatabase();
+
+    this.musicService.getPlaylistTracks().subscribe(tracks => {
+      this.tracks = tracks;
+      // this.handleRandom();
+    });
+
+    this.musicService.audio.onended = this.handleEnded.bind(this);
+    // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
     setInterval(this.handleTimeUpdate.bind(this), 100);
   }
 
-  handleFile(filePath){
+  handleFile(filePath) {
     this.trackInfo = this.id3service.getTrackInfo(filePath);
     this.menuState = 'in';
     this.playerService.load(filePath);
@@ -140,4 +151,8 @@ export class AppComponent implements OnInit {
     showDialog() {
         this.display = true;
     }
+
+  indexMusicDatabase() {
+    this.searchService.indexFolder('C:/Users/Anuradha/Music');
+  }
 }

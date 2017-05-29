@@ -36,6 +36,7 @@
     "core-js": "^2.4.1",
     "dotenv": "^4.0.0",
     "electron": "^1.6.10",
+    "elasticlunr": "^0.9.5",
     "font-awesome": "^4.7.0",
     "node-id3": "0.0.9",
     "primeng": "^1.1.4",
