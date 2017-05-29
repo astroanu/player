@@ -142,11 +142,11 @@ export class AppComponent implements OnInit {
   }
 
 
-    showDialog() {
-        this.display = true;
-    }
+  showDialog() {
+      this.display = true;
+  }
 
   indexMusicDatabase() {
-    this.searchService.indexFolder('C:/Users/Anuradha/Music');
+    this.searchService.indexFolder('D:/user/Music/Schiller/Opus');
   }
 }

@@ -14,8 +14,10 @@ export class ID3Service {
 
         let trackInfo = new TrackInfo(id3Info);
 
-        this.musicInfoService.getAlbumInfo().subscribe((album: any) => {
-            trackInfo.setImage(album.image[1]['#text']);
+        this.musicInfoService.getAlbumInfo(id3Info).subscribe((album: any) => {
+            if(album){
+                trackInfo.setImage(album.image[1]['#text']);
+            }
         });
 
         return trackInfo;

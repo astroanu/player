@@ -8,19 +8,23 @@ export class MusicInfoService {
     private apiSecret = 'abbc84c5bd3c0976cb7e69b1f203cc5d';
     private apiRoot = 'http://ws.audioscrobbler.com/2.0/';
 
-    public getAlbumInfo() {
+    public getTrackInfo(id3:any){
+        return this.request({
+            method: 'track.getInfo',
+            artist: id3.artist,
+            track: id3.title
+        }).map(data => data.track);
+    }
+
+    public getAlbumInfo(id3:any) {
         return this.request({
             method: 'album.getinfo',
-            artist: 'schiller',
-            album: 'atemlos'
+            artist: id3.artist,
+            album: id3.album
         }).map(data => data.album);
     }
 
-    private request(data: {
-        method: string,
-        artist: string,
-        album: string
-    }) {
+    private request(data:any) {
 
         let post = Object.assign(data, {
             api_key: this.apiKey,
@@ -33,6 +37,6 @@ export class MusicInfoService {
     }
 
     constructor(
-        private http: Http,
+        private http: Http
     ) { }
 }

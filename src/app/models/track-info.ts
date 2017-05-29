@@ -2,6 +2,7 @@ export class TrackInfo {
 
   public title: string;
   public artist: string;
+  public album:string;
   public composer: string;
   public image: string = './assets/music-placeholder.png';
   public genre: string;
@@ -18,6 +19,7 @@ export class TrackInfo {
   public constructor(init: any) {
     this.title = init.title ? init.title : null;
     this.artist = init.artist ? init.artist : null;
+    this.album = init.album ? init.album : null;
     this.composer = init.composer ? init.composer : null;
     this.genre = init.genre ? init.genre : null;
     this.length = init.length ? init.length : null;

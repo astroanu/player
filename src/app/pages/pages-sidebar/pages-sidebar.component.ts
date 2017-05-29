@@ -26,11 +26,11 @@ export class SidebarComponent {
     }
 
     ngOnInit() {
-        readdir(this.path, (err, files) => {
+        /*readdir(this.path, (err, files) => {
             this.files = files.filter((f) => {
                 return f.slice(-3) == 'mp3';
             });
-        })
+        })*/
     }
 
     constructor(
