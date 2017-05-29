@@ -1,10 +1,10 @@
 import { Component, trigger, state, style, transition, animate, OnInit } from '@angular/core';
-import { PlayerService } from './services/player.service';
 
 import { TrackInfo } from './models/track-info';
 
 import { SearchService } from './services/search.service';
 import { ID3Service } from './services/id3.service';
+import { PlayerService } from './services/player.service';
 
 @Component({
   selector: 'app-root',
@@ -45,19 +45,13 @@ export class AppComponent implements OnInit {
   constructor(
     private playerService: PlayerService,
     private id3service : ID3Service,
-    private musicService: MusicService,
     private searchService: SearchService
   ) { }
 
   ngOnInit() {
     this.indexMusicDatabase();
 
-    this.musicService.getPlaylistTracks().subscribe(tracks => {
-      this.tracks = tracks;
-      // this.handleRandom();
-    });
-
-    this.musicService.audio.onended = this.handleEnded.bind(this);
+    this.playerService.audio.onended = this.handleEnded.bind(this);
     // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
     setInterval(this.handleTimeUpdate.bind(this), 100);

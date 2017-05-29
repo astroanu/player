@@ -35,7 +35,7 @@ const appRoutes: Routes = [];
   providers: [
     PlayerService,
     ID3Service,
-    MusicInfoService
+    MusicInfoService,
     SearchService
   ],
   bootstrap: [AppComponent]
