@@ -23,7 +23,7 @@ import { ID3Service } from './services/id3.service';
   ]
 })
 export class AppComponent implements OnInit {
-  trackInfo:TrackInfo;
+  trackInfo: TrackInfo;
   position: number;
   elapsed: number;
   duration: number;
@@ -34,11 +34,11 @@ export class AppComponent implements OnInit {
   filteredTracks: any[] = [];
   backgroundStyle;
 
-  menuState:string = 'out';
+  menuState: string = 'out';
 
   constructor(
     private musicService: MusicService,
-    private id3service : ID3Service
+    private id3service: ID3Service
   ) { }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     });
 
     this.musicService.audio.onended = this.handleEnded.bind(this);
-   // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
+    // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
     setInterval(this.handleTimeUpdate.bind(this), 100);
 
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  handleFile(filePath){
+  handleFile(filePath) {
     this.trackInfo = this.id3service.getTrackInfo(filePath);
     this.musicService.play(filePath);
 
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
   handleRandom() {
     const randomTrack = this.musicService.randomTrack(this.tracks);
     this.musicService.play(randomTrack.stream_url);
-   // this.title = randomTrack.title;
+    // this.title = randomTrack.title;
   }
 
   handlePausePlay() {
@@ -149,7 +149,7 @@ export class AppComponent implements OnInit {
 
   handleUpdate(track) {
     this.musicService.play(track.stream_url);
-   // this.title = track.title;
+    // this.title = track.title;
   }
 
 }
