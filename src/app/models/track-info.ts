@@ -3,7 +3,7 @@ export class TrackInfo {
   public title: string;
   public artist: string;
   public composer: string;
-  public image: string;
+  public image: string = './assets/music-placeholder.png';
   public genre: string;
   public length: string;
   public performerInfo: string;

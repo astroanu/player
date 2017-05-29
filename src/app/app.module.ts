@@ -9,6 +9,7 @@ import { PagesModule } from './pages/pages.module';
 import { SettingsModule } from './settings/settings.module';
 
 import { ID3Service } from './services/id3.service';
+import { SearchService } from './services/search.service';
 import { MusicInfoService } from './services/music-info.service';
 
 const appRoutes: Routes = [];
@@ -25,11 +26,11 @@ const appRoutes: Routes = [];
     MusicModule,
     PagesModule,
     SettingsModule
-
   ],
   providers: [
     ID3Service,
-    MusicInfoService
+    MusicInfoService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

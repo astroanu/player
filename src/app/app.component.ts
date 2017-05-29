@@ -3,6 +3,7 @@ import { MusicService } from './music/shared/music.service';
 
 import { TrackInfo } from './models/track-info';
 
+import { SearchService } from './services/search.service';
 import { ID3Service } from './services/id3.service';
 
 @Component({
@@ -38,10 +39,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private musicService: MusicService,
-    private id3service: ID3Service
+    private id3service: ID3Service,
+    private searchService: SearchService
   ) { }
 
   ngOnInit() {
+    this.indexMusicDatabase();
+
     this.musicService.getPlaylistTracks().subscribe(tracks => {
       this.tracks = tracks;
       // this.handleRandom();
@@ -152,4 +156,7 @@ export class AppComponent implements OnInit {
     // this.title = track.title;
   }
 
+  indexMusicDatabase() {
+    this.searchService.indexFolder('C:/Users/Anuradha/Music');
+  }
 }

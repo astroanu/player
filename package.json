@@ -35,6 +35,7 @@
     "@types/node": "^6.0.73",
     "core-js": "^2.4.1",
     "dotenv": "^4.0.0",
+    "elasticlunr": "^0.9.5",
     "font-awesome": "^4.7.0",
     "node-id3": "0.0.9",
     "primeng": "^1.1.4",
