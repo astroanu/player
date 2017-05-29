@@ -1,3 +1,6 @@
+<!--div class="titile-bar">Player
+  <button pButton type="button" class="ui-button-danger ui-button btn-close" (click)="handleAppQuit()"><i class="fa fa-close"></i></button>
+</div-->
 <div class="ui-grid ui-grid-responsive app-container">
   <div class="ui-grid-row top-panel">
     <div class="ui-grid-col-3 left-panel">
@@ -30,6 +33,11 @@
       <music-volume [muted]="muted" [volume]="gain" (muteUnmute)="handleMuteUnmute()" (gain)="handleGain($event)"></music-volume>
     </div>
 
+    <p-dialog header="Title" [(visible)]="display">
+      <settings-general></settings-general>
+    </p-dialog>
+
+    <button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show"></button>
   </div>
 </div>
 

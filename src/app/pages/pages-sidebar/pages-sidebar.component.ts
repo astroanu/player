@@ -8,11 +8,18 @@ import { readdir } from 'fs';
 })
 export class SidebarComponent {
 
-     @Output() file = new EventEmitter();
+    @Output() file = new EventEmitter();
 
     private path = 'D:/user/Music/Schiller/Leben';
 
     files = [];
+
+    sideMenuItems= [
+        {
+            label: 'File',
+            url:'settings/general'
+        }
+    ];
 
     handleClickFile(file){
         this.file.emit(this.path + '/' + file);

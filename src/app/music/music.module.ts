@@ -16,9 +16,6 @@ import { MusicFooterComponent } from './music-footer/music-footer.component';
 
 import { FormatTimePipe } from './format-time-pipe';
 
-import { MusicService } from './shared/music.service';
-import { ApiService } from './shared/api.service';
-
 const musicRoutes: Routes = [
   {
     path: 'songs',
@@ -57,8 +54,6 @@ const musicRoutes: Routes = [
     FormatTimePipe
   ],
   providers: [
-    ApiService,
-    MusicService
   ],
 })
 export class MusicModule { }

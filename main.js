@@ -38,10 +38,18 @@ app.on('ready', function () {
 
   // Initialize the window to our specified dimensions
   win = new BrowserWindow({
+    //  frame: false,
+    //  titleBarStyle: 'hidden',
+    backgroundColor: '#111',
     minWidth: 900,
     minHeight: 600,
     maxWidth: display.size.width,
-    maxHeight: display.size.height
+    maxHeight: display.size.height,
+    /*webPreferences: {
+      webSecurity: false,
+      allowDisplayingInsecureContent: true,
+      allowRunningInsecureContent: true
+    }*/
   });
 
   win.webContents.openDevTools();

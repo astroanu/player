@@ -3,16 +3,31 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Scotch Player</title>
-  <base href="./">
+  <title>Player</title>
+  <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    .preloader {
+      text-align: center;
+      line-height: 40%;
+      height: 100vh;
+      padding-top: 30%;
+    }
+
+    .preloader .fa {
+      font-size: 80px;
+    }
+  </style>
 </head>
 
 <body>
   <app-root>
-    <i class="fa fa-headphones"></i>
+    <div class="preloader">
+      <i class="fa fa-headphones"></i>
+      <h1>PLAYER</h1>
+    </div>
   </app-root>
 </body>
 

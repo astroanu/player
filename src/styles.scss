@@ -73,3 +73,14 @@ input, button, textarea, :focus {
 .ui-progressbar .ui-progressbar-value{
   background: $primary-color;
 }
+
+.preloader{
+  text-align: center;
+  line-height: 40%;
+  height: 100vh;
+  padding-top: 30%;
+
+  .fa{
+    font-size:80px;
+  }
+}

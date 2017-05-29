@@ -1,9 +1,12 @@
 const path = require('path');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const cssnano = require('cssnano');
+
+const dotenv = require('dotenv').config();
 
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
@@ -372,6 +375,12 @@ module.exports = {
     ]
   },
   "plugins": [
+    new HtmlReplaceWebpackPlugin([
+      {
+        pattern: '<base href="/">',
+        replacement: process.env.PACKAGE === true ? '<base href="./">' : '<base href="/">'
+      }
+    ]),
     new NoEmitOnErrorsPlugin(),
     new GlobCopyWebpackPlugin({
       "patterns": [

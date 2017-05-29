@@ -4,7 +4,7 @@ import { HttpModule } from "@angular/http";
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AutoCompleteModule, SliderModule, ButtonModule } from 'primeng/primeng';
+import { InputTextModule, SliderModule, ButtonModule } from 'primeng/primeng';
 
 import { GeneralSettingsComponent } from './settings-general/settings-general.component';
 
@@ -19,7 +19,7 @@ const settingsRoutes: Routes = [
     imports: [
         RouterModule.forRoot(settingsRoutes),
         FormsModule,
-        AutoCompleteModule,
+        InputTextModule,
         SliderModule,
         ButtonModule,
         HttpModule,
