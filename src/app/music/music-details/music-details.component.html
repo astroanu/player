@@ -1,5 +1,5 @@
 <div class="album-art">
-  <a href="#"><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=50&h=50" alt=""></a>
+  <a href="#"><img [src]="trackInfo ? trackInfo.image : '' " alt=""></a>
 </div>
 <h3 class="song-title"><a href="#">{{ trackInfo ? trackInfo.title : '' }}</a></h3>
 <p class="artist-title"><a href="#">{{ trackInfo ? trackInfo.artist : '' }}</a></p>

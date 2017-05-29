@@ -1,4 +1,4 @@
-import { Component, Input ,Output,EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { readdir } from 'fs';
 
 @Component({
@@ -10,7 +10,7 @@ export class SidebarComponent {
 
     @Output() file = new EventEmitter();
 
-    private path = 'D:/user/Music/Schiller/Leben';
+    private path = 'C:/Users/Anuradha/Music';
 
     files = [];
 
@@ -21,13 +21,13 @@ export class SidebarComponent {
         }
     ];
 
-    handleClickFile(file){
+    handleClickFile(file) {
         this.file.emit(this.path + '/' + file);
     }
 
     ngOnInit() {
         readdir(this.path, (err, files) => {
-            this.files = files.filter((f)=>{
+            this.files = files.filter((f) => {
                 return f.slice(-3) == 'mp3';
             });
         })

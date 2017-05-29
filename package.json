@@ -35,7 +35,11 @@
     "@types/node": "^6.0.73",
     "core-js": "^2.4.1",
     "dotenv": "^4.0.0",
+<<<<<<< HEAD
     "electron": "^1.6.10",
+=======
+    "elasticlunr": "^0.9.5",
+>>>>>>> 4d4513151ee0e820c6fd6ddf0478db9da69c1ea1
     "font-awesome": "^4.7.0",
     "node-id3": "0.0.9",
     "primeng": "^1.1.4",
