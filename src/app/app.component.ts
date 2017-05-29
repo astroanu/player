@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
   constructor(
     private playerService: PlayerService,
     private id3service : ID3Service,
+    private musicService: MusicService,
     private searchService: SearchService
   ) { }
 
@@ -141,12 +142,12 @@ export class AppComponent implements OnInit {
     //this.playerService.play(track.stream_url);
   }
 
-
   showDialog() {
       this.display = true;
   }
 
   indexMusicDatabase() {
-    this.searchService.indexFolder('D:/user/Music/Schiller/Opus');
+    //this.searchService.indexFolder('D:/user/Music/Schiller/Opus');
+    this.searchService.indexFolder('C:/Users/Anuradha/Music');
   }
 }
