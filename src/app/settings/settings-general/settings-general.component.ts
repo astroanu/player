@@ -9,7 +9,7 @@ export class GeneralSettingsComponent {
 
 
     ngOnInit() {
-        
+
     }
 
     constructor(

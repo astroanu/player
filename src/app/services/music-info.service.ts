@@ -8,7 +8,7 @@ export class MusicInfoService {
     private apiSecret = 'abbc84c5bd3c0976cb7e69b1f203cc5d';
     private apiRoot = 'http://ws.audioscrobbler.com/2.0/';
 
-    public getTrackInfo(id3:any){
+    public getTrackInfo(id3: any) {
         return this.request({
             method: 'track.getInfo',
             artist: id3.artist,
@@ -16,7 +16,7 @@ export class MusicInfoService {
         }).map(data => data.track);
     }
 
-    public getAlbumInfo(id3:any) {
+    public getAlbumInfo(id3: any) {
         return this.request({
             method: 'album.getinfo',
             artist: id3.artist,
@@ -24,7 +24,7 @@ export class MusicInfoService {
         }).map(data => data.album);
     }
 
-    private request(data:any) {
+    private request(data: any) {
 
         let post = Object.assign(data, {
             api_key: this.apiKey,

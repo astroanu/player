@@ -24,8 +24,8 @@ import { PlayerService } from './services/player.service';
   ]
 })
 export class AppComponent implements OnInit {
-  trackInfo:TrackInfo;
-  track:any;
+  trackInfo: TrackInfo;
+  track: any;
   position: number;
   elapsed: number;
   duration: number;
@@ -40,12 +40,11 @@ export class AppComponent implements OnInit {
   menuState: string = 'out';
 
 
-   display: boolean = false;
-   
+  display: boolean = false;
+
   constructor(
     private playerService: PlayerService,
-    private id3service : ID3Service,
-    private musicService: MusicService,
+    private id3service: ID3Service,
     private searchService: SearchService
   ) { }
 
@@ -53,7 +52,7 @@ export class AppComponent implements OnInit {
     this.indexMusicDatabase();
 
     this.playerService.audio.onended = this.handleEnded.bind(this);
-    // this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
+    // this.playerService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
 
     setInterval(this.handleTimeUpdate.bind(this), 100);
   }
@@ -143,7 +142,7 @@ export class AppComponent implements OnInit {
   }
 
   showDialog() {
-      this.display = true;
+    this.display = true;
   }
 
   indexMusicDatabase() {

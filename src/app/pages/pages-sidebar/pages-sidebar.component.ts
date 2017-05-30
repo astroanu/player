@@ -14,10 +14,10 @@ export class SidebarComponent {
 
     files = [];
 
-    sideMenuItems= [
+    sideMenuItems = [
         {
             label: 'File',
-            url:'settings/general'
+            url: 'settings/general'
         }
     ];
 

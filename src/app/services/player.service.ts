@@ -24,7 +24,7 @@ export class PlayerService {
   }
 
   getPlaylistTracks() {
-  
+
   }
 
   randomTrack(tracks) {
@@ -36,7 +36,7 @@ export class PlayerService {
   }
 
   findTracks(value) {
-    
+
   }
 
 }
