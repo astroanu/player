@@ -385,7 +385,8 @@ module.exports = {
     new GlobCopyWebpackPlugin({
       "patterns": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "worker.js"
       ],
       "globOptions": {
         "cwd": "./src",

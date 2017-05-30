@@ -3,13 +3,11 @@ import { readdir } from 'fs';
 
 import { ID3Service } from './id3.service';
 import { MusicInfoService } from './music-info.service';
-import { AngularIndexedDB } from 'angular2-indexeddb';
 
 @Injectable()
 export class SearchService {
 
-    private dbVersion = 3;
-    private songDb;
+    private worker;
 
     public indexFolder(path: string) {
         readdir(path, (err, files) => {
@@ -22,55 +20,24 @@ export class SearchService {
     }
 
     public indexFile(file: string) {
-        this.musicInfoService.getTrackInfo(this.id3Service.getTrackInfo(file)).subscribe((album: any) => {
-            if (album) {
-                this.addArtist(album).then(() => {
-                    this.addAlbum(album).then(() => {
-                        this.addSong(album);
-                    });
-                });
+        this.musicInfoService.getTrackInfo(this.id3Service.getTrackInfo(file)).subscribe((track: any) => {
+            if (track) {
+                this.worker.postMessage(['addTrack', {
+                    file:file,
+                    track:track
+                }]);
             }
         });
-    }
-
-    private addSong(album) {
-        return this.songDb.add('songs', { name: album.artist.name });
-    }
-
-    private addArtist(album) {
-        return this.songDb.add('artists', { name: album.artist.name });
-    }
-
-    private addAlbum(album) {
-        return this.songDb.add('albums', { name: album.name, artist: album.artist.name });
     }
 
     constructor(
         private id3Service: ID3Service,
         private musicInfoService: MusicInfoService
     ) {
-        this.songDb = new AngularIndexedDB('player', this.dbVersion);
+        this.worker = new Worker('worker.js');
 
-        try {
-            this.songDb.createStore(this.dbVersion, (evt) => {
-                let objectStore = evt.currentTarget.result.createObjectStore('songs', { keyPath: "id", autoIncrement: true });
-
-                objectStore.createIndex("file", "file", { unique: true });
-            });
-        } catch (e) { }
-
-        try {
-            this.songDb.createStore(this.dbVersion, (evt) => {
-                let objectStore = evt.currentTarget.result.createObjectStore('artists', { keyPath: "id", autoIncrement: true });
-
-                objectStore.createIndex("artist", "artist", { unique: true });
-            });
-        } catch (e) { }
-
-        try {
-            this.songDb.createStore(this.dbVersion, (evt) => {
-                let objectStore = evt.currentTarget.result.createObjectStore('albums', { keyPath: "id", autoIncrement: true });
-            });
-        } catch (e) { }
+        this.worker.onmessage = function(e){
+            console.log(e.data);
+        };
     }
 }

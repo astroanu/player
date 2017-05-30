@@ -120,6 +120,9 @@ export class AppComponent implements OnInit {
     if (duration - elapsed >= 5) {
       this.playerService.audio.currentTime = elapsed + 5;
     }
+
+    
+    this.indexMusicDatabase();
   }
 
   handleTimeUpdate(e) {
